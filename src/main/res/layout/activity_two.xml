@@ -4,23 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".ActivityTwo">
 
-    <TextView
-        android:text="Hello World"
-        android:id="@+id/txtOne"
+    <EditText
+        android:id="@+id/editTwo"
         android:textSize="20sp"
-        android:gravity="center"
-        android:layout_width="wrap_content"
+        android:inputType="textMultiLine"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true" >
-    </TextView>
+    </EditText>
     <Button
-        android:text="Next"
-        android:id="@+id/btnNext"
+        android:text="Save"
+        android:id="@+id/btnSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/txtOne"
+        android:layout_below="@+id/editTwo"
         android:layout_centerInParent="true">
     </Button>
 
