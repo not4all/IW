@@ -1,39 +1,27 @@
 package ru.startandroid.iw0001_hw_twoactivity;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class ActivityTwo extends AppCompatActivity implements View.OnClickListener {
+public class ActivityTwo extends AppCompatActivity {
 
     EditText editTwo;
-    Button btnSave;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_two);
 
-        btnSave = (Button) findViewById(R.id.btnSave);
-
-        btnSave.setOnClickListener(this);
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.btnSave:
-                Intent intent = new Intent (this, MainActivity.class);
-                editTwo = (EditText) findViewById(R.id.editTwo);
-                intent.putExtra("editActTwo", editTwo.getText().toString());
-                startActivity(intent);
-                break;
-            default:
-                break;
-        }
+        editTwo = findViewById(R.id.editTwo);
+        findViewById(R.id.btnSave).setOnClickListener(view -> {
+           Intent intent = new Intent();
+           intent.putExtra(MainActivity.DATA, editTwo.getText().toString());
+           setResult(RESULT_OK, intent);
+           finish();
+        });
     }
 }
