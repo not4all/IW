@@ -11,7 +11,6 @@
         android:theme="@style/Theme.AndroidLessons">
         <activity
             android:name=".ActivityTwo"
-            android:exported="false"
             android:label="Activity #2"/>
         <activity
             android:name=".MainActivity"

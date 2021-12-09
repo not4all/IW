@@ -1,6 +1,5 @@
 package ru.startandroid.iw0001_hw_twoactivity;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,7 +8,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView txtOne;
+    TextView txtOne;
     Button btnNext;
 
     public static final int REQUEST_CODE = 100;
@@ -20,7 +19,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
+        txtOne = findViewById(R.id.txtOne);
         btnNext = findViewById(R.id.btnNext);
+
         btnNext.setOnClickListener(view -> {
             Intent intent = new Intent(this, ActivityTwo.class);
             startActivityForResult(intent, REQUEST_CODE);
@@ -28,14 +29,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        switch (requestCode) {
-            case REQUEST_CODE:
-                txtOne = findViewById(R.id.txtOne);
+        if(data == null) {
+            return;
+        }
                 String currentData = data.getStringExtra(DATA);
                 txtOne.setText(currentData);
-                break;
-        }
+
+
+
     }
 }
